@@ -2,6 +2,7 @@ import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";
 import {collection, addDoc, getDocs, query, onSnapshot, orderBy} from "firebase/firestore";
 import { async } from "@firebase/util";
+import Nweet from "components/Nweet";
 
 const Home = ({userObj}) => {
     const [nweet, setNweet] = useState("");
@@ -38,9 +39,10 @@ const Home = ({userObj}) => {
         </form>
         <div>
             {nweets.map((nweet) => (
-                <div key={nweet.id}>
-                    <h4>{nweet.text}</h4>
-                </div>
+                <Nweet 
+                    key={nweet.id} 
+                    nweetObj={nweet} //map을 실행하면서 id를 가지고 있는 nweetObj를 보내고 있음
+                    isOwner={nweet.creatorId === userObj.uid}/>
             ))}
         </div>
     </div>
