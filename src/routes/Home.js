@@ -31,11 +31,26 @@ const Home = ({userObj}) => {
         const {target:{value}} = event; //event안에 있는 target 안에 있는 value를 달라고 하는 것
      setNweet(value);
     };
+    const onFileChange = (event) => {
+        const {target:{files},
+        } = event;
+        const theFile = files[0];
+        const reader = new FileReader(); //file api
+        reader.onloadend = (finishedEvent) => 
+        reader.readAsDataURL(theFile);
+    }
     return (
         <div>
         <form onSubmit={onSubmit}>
-            <input onChange={onChange} value={nweet} type="text" placeholder="What's on your mind?" maxLength={120} />
-            <input type="submit" value="Nweet" /> 
+            <input 
+                onChange={onChange} 
+                value={nweet} 
+                type="text" 
+                placeholder="What's on your mind?" 
+                maxLength={120} 
+            />
+            <input type="file" accept="image/*" onFileChange={onFileChange} />
+            <input type="submit" value="Nweet"/>
         </form>
         <div>
             {nweets.map((nweet) => (
