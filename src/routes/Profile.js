@@ -5,7 +5,7 @@ import {collection, getDocs, query, where, orderBy} from "@firebase/firestore";
 import { updateProfile } from "firebase/auth";
 import { async } from "@firebase/util";
 
-export default ({userObj}) => {
+export default ({ refreshUser,userObj}) => {
     const history = useHistory();
     const [newDisplayName, setNewDisplayName] = useState(userObj.newDisplayName);
     const onLogOutClick = () => {
@@ -37,10 +37,11 @@ export default ({userObj}) => {
     const onSubmit = async(event) => {
       event.preventDefault();
       if(userObj.displayName !== newDisplayName){ //아무 변경사항 없으면 업데이트를 하지 않음
-        await updateProfile(userObj,
+        await updateProfile(authService.currentUser,
          {displayName: newDisplayName}
           //console.log(userObj.updateProfile);
       )}; 
+      refreshUser(); //react.js에 있는 profile 새로고침~
     }
     
     return (
