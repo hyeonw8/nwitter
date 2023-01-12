@@ -48,6 +48,9 @@ const Nweet = ({nweetObj, isOwner}) => {
             )  :  (
             <>
             <h4>{nweetObj.text}</h4>
+            {nweetObj.attachmentUrl && (
+                <img src={nweetObj.attachmentUrl} width="50px" height="50px" />
+                )}
             {isOwner && ( //내가 isowner일때만 버튼의 fragment를 볼 수 있음
                 <>
                     <button onClick={onDeleteClick}>Delete Nweet</button>

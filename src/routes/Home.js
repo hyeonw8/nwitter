@@ -1,8 +1,10 @@
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import React, { useEffect, useState } from "react";
 import {collection, addDoc, getDocs, query, onSnapshot, orderBy} from "firebase/firestore";
 import { async } from "@firebase/util";
 import Nweet from "components/Nweet";
+import { v4 as uuidv4 } from 'uuid';
+import {getDownloadURL, ref, uploadString} from "@firebase/storage";
 
 const Home = ({userObj}) => {
     const [nweet, setNweet] = useState("");
@@ -22,11 +24,22 @@ const Home = ({userObj}) => {
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        await addDoc(collection(dbService,"nweets"),
-        {text:nweet, 
-        createdAt:Date.now(),
-        creatorId : userObj.uid,});
-        setNweet("");
+        let attachmentUrl = ""; //사진이 없다면 그냥 빈 스트링 , 있다면 업로드하고 아래 과정을 진행함
+                                //그리고 난 다음 비어있는 string을 stroage에서 다운로드 받은 url로 업에이트함
+        if(attachment != "") {
+        const attachmentRef = ref(storageService,`${userObj.uid}/${uuidv4()}`);
+        const response = await uploadString(attachmentRef,attachment, "data_url");
+        attachmentUrl = await getDownloadURL(response.ref);
+        }
+        const nweetObj = {
+            text : nweet, 
+            createdAt : Date.now(),
+            creatorId : userObj.uid,
+            attachmentUrl,
+        };
+        await addDoc(collection(dbService,"nweets"), nweetObj);
+        setNweet(""); 
+        setAttachment("");
     };
     const onChange = (event) => {
         const {target:{value}} = event; //event안에 있는 target 안에 있는 value를 달라고 하는 것
@@ -38,7 +51,6 @@ const Home = ({userObj}) => {
         const theFile = files[0];
         const reader = new FileReader(); //file api
         reader.onloadend = (finishedEvent) => {
-            console.log(finishedEvent);
             const {currentTarget : {result},
             }  = finishedEvent;
             setAttachment(result); //onloadend에 finishEvent의 result를 setAttachment로 설정
