@@ -52,7 +52,7 @@ export default ({ refreshUser,userObj}) => {
             type="text" 
             autoFocus
             placeholder="Display name" 
-            value={newDisplayName}
+            value={newDisplayName || ''}
             className="formInput"
           />
           <input 

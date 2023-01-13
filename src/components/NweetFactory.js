@@ -51,7 +51,7 @@ const NweetFactory = ({userObj}) => {
     const fileInput = useRef();
     const onClearAttachment  = () => {
         setAttachment("");
-        fileInput.current.value = null;
+        //fileInput.current.value = null;
     };
     return (
         <form onSubmit={onSubmit} className="factoryForm">
@@ -72,7 +72,7 @@ const NweetFactory = ({userObj}) => {
             </div>
             <label 
                 htmlFor="attach-file" 
-                className="factoryInputt__label">
+                className="factoryInput__label">
                     <span>Add phothos</span>
                     <FontAwesomeIcon icon={faPlus} />
             </label>

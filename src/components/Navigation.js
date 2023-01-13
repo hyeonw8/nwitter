@@ -8,8 +8,8 @@ const Navigation = ({userObj}) => (
     <nav>
         <ul style={{ display: "flex", justifyContent: "center", marginTop: 50}}>
             <li>
-                <Link to="/" style={{marginRight: 10}}>
-                    <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"}
+                <Link to="/" style={{marginRight: 30}}>
+                    <FontAwesomeIcon icon={faTwitter} color={"#806dbf"}
                     size="2x" />
                 </Link>
             </li>
@@ -17,16 +17,17 @@ const Navigation = ({userObj}) => (
                 <Link 
                     to="/profile"
                     style={{
-                        mariginLeft:10,
-                        display: "felx",
+                        mariginLeft: 10,
+                        display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
                         fontSize: "12",
                     }}
                 >
-                    <FontAwesomeIcon icon={faUser} color={"#04AAFF"}
+                    <FontAwesomeIcon icon={faUser} color={"#806dbf"}
                     size="2x" />
-                    <span style={{ marginTop : 10}}>
+                    <span 
+                        style={{marginTop : 10}}>
                         {userObj.displayName
                         ? `${userObj.displayName}의 Profile`
                         : "Profile"}
