@@ -20,10 +20,12 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                         <Profile userObj={userObj} refreshUser={refreshUser}/>
                     </Route>
                     </> 
-                )    :  (
-                    <Route exact path="/">
+                )  :  (
+                    <>
+                    <Route>
                         <Auth />
                     </Route>
+                    </>
                 )}
             </Switch>
         </Router>

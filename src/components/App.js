@@ -5,25 +5,23 @@ import { updateCurrentUser, updateProfile } from "firebase/auth";
 
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null);
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if(user) {
-        setIsLoggedIn(true);
         setUserObj({
-          displayName:user.displayName,
+          displayName: user.displayName,
           uid: user.uid,
           updateProfile: (args) => updateProfile(user, 
             {displayName:user.displayName}),
         })
       } else {
-        setIsLoggedIn(false);
+        setUserObj(null);
       }
       setInit(true);
     });
   }, []);
-  const refreshUser = async() => {
+  const refreshUser = () => {
     const user = authService.currentUser;
     // await updateCurrentUser(authService,authService.currentUser);
     setUserObj({
@@ -37,7 +35,7 @@ function App() {
     {init ? (
       <AppRouter 
         refreshUser={refreshUser}
-        isLoggedIn={isLoggedIn} 
+        isLoggedIn={Boolean(userObj)} 
         userObj={userObj}/> )
       : ("Initializing...")}
     {/*<footer>&copy; {new Date().getFullYear()} Nwitter</footer> */}
