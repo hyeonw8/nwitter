@@ -1,0 +1,131 @@
+@import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
+
+* {
+    box-sizing: border-box;
+}
+
+input {
+    all: unset;
+    box-sizing: border-box;
+    appearance: none;
+}
+
+body {
+    background-color: black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    color: white;
+}
+
+button {
+    background-color: white;
+    color: black;
+}
+  
+a {
+    text-decoration: none;
+    color: inherit;
+}
+  
+form {
+    width: 100%;
+}
+
+.nweet-input::placeholder {
+    color: white;
+    opacity: 0.9;
+}
+  
+.container {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formInput {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: white;
+    color: black;
+  }
+
+.formBtn {
+    cursor: pointer;
+    width: 100%;
+    padding: 7px 20px;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    background-color: #04aaff;
+    cursor: pointer;
+}
+  
+.cancelBtn {
+    cursor: pointer;
+    background-color: tomato;
+}
+
+/* Profile Page */
+
+.profileForm {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+    padding-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+.logOut {
+    margin-top: 50px;
+}
+
+/* Nwitter Factory */
+
+.factoryForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+.factoryInput__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.factoryInput__input {
+    flex-grow: 1;
+    height: 40px;
+    padding: 0px 20px;
+    color: white;
+    border: 1px solid #04aaff;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 12px;
+}
+  
+.factoryInput__arrow {
+    position: absolute;
+    right: 0;
+    background-color: #04aaff;
+    height: 40px;
+    width: 40px;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+}
+  
+.factoryInput__label {
+    color: #04aaff;
+    cursor: pointer;
+}
