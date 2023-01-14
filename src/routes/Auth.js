@@ -4,7 +4,8 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, Go
 import { async } from "@firebase/util";
 import AuthForm from "components/AuthForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
+import {  faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faCloudMoon } from "@fortawesome/free-solid-svg-icons";
 
 const Auth = () => {
     const onSocialClick = async (event) => {
@@ -20,7 +21,7 @@ const Auth = () => {
     return (
         <div className="authContainer">
             <FontAwesomeIcon
-            icon={faTwitter}
+            icon={faCloudMoon}
             color={"#806dbf"}
             size="3x"
             style={{ marginBottom: 30 }}

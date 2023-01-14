@@ -127,7 +127,7 @@ form {
 }
   
 .factoryInput__label {
-    color: #bda0cd;
+    color: #9c8ad5;
     cursor: pointer;
     
     
@@ -152,7 +152,7 @@ form {
 }
 
 .factoryForm__clear {
-    color: #bda0cd;
+    color: #9c8ad5;
     cursor: pointer;
     text-align: center;
     margin-top: 10px;
@@ -176,7 +176,7 @@ form {
 
 .nweet {
     margin-bottom: 20px;
-    background-color: rgb(239, 239, 239);
+    background-color: rgba(255, 255, 255, 0.75);
     width: 100%;
     max-width: 320px;
     padding: 20px;
@@ -260,7 +260,7 @@ form {
 
 .authSubmit {
     text-align: center;
-    background: #866699;
+    background: #806dbf;
     color: white;
     margin-top: 10px;
     cursor: pointer;
@@ -274,11 +274,12 @@ form {
 }
 
 .authSwitch {
-    color: #c265f1;
+    color: #9c8ad5;
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 50px;
     display: block;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: bold;
     text-decoration: underline;
 }
