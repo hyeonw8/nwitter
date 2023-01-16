@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import {collection, getDocs, query, where, orderBy} from "@firebase/firestore";
 import { updateProfile } from "firebase/auth";
 import { async } from "@firebase/util";
+import ProfilePhoto from "components/ProfilePhoto";
 
 export default ({ refreshUser,userObj}) => {
     const history = useHistory();
@@ -46,6 +47,7 @@ export default ({ refreshUser,userObj}) => {
     
     return (
       <div className="container">
+        <ProfilePhoto />
         <form onSubmit={onSubmit} className="profileForm">
           <input 
             onChange={onChange}

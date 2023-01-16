@@ -71,7 +71,6 @@ form {
 }
 
 /* Profile Page */
-
 .profileForm {
     border-bottom: 1px solid rgba(255, 255, 255, 0.9);
     padding-bottom: 30px;
@@ -82,6 +81,13 @@ form {
   
 .logOut {
     margin-top: 50px;
+}
+
+
+/* Profile Photo */
+.avatar_img {
+    display: flex;
+    margin:auto;
 }
 
 /* Nwitter Factory */
