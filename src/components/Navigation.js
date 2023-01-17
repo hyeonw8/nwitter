@@ -1,8 +1,6 @@
-import React from "react";
-import {Link} from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faCloudMoon, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const Navigation = ({userObj}) => (
     <nav>
@@ -25,7 +23,7 @@ const Navigation = ({userObj}) => (
                     }}
                 >
                     <FontAwesomeIcon icon={faUser} color={"#806dbf"}
-                    size="2x" />
+                    size="2x" /> 
                     <span 
                         style={{marginTop : 10}}>
                         {userObj.displayName

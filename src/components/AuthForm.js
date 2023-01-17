@@ -30,7 +30,8 @@ const AuthForm = () => {
             }
             console.log(data)
         } catch (error) {
-            setError(error.message.replace("Firebase:",""));
+            console.log(error.message);
+            setError(error.message.replace("Firebase:","").split("(")[0 ]);
         }
     };
     const toggleAccount = () => setNewAccount((prev) => !prev);

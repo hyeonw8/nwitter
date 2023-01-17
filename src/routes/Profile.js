@@ -47,8 +47,8 @@ export default ({ refreshUser,userObj}) => {
     
     return (
       <div className="container">
-        <ProfilePhoto />
         <form onSubmit={onSubmit} className="profileForm">
+          <ProfilePhoto />
           <input 
             onChange={onChange}
             type="text" 
@@ -59,7 +59,7 @@ export default ({ refreshUser,userObj}) => {
           />
           <input 
             type="submit" 
-            value="Update Profile"
+            value="Update Name"
             className="formBtn"
             style={{
               marignTop: 10,
