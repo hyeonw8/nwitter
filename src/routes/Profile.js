@@ -1,15 +1,17 @@
 import { authService, dbService, storageService } from "fbase";
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import {collection, getDocs, query, where, orderBy} from "@firebase/firestore";
 import { updateProfile } from "firebase/auth";
-import { async } from "@firebase/util";
-import { getDownloadURL } from "firebase/storage";
+import { getDownloadURL, ref, uploadString } from "@firebase/storage";
+import { Avatar } from "antd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Profile = ({ refreshUser,userObj}) => {
     const history = useHistory();
     const [newDisplayName, setNewDisplayName] = useState(userObj.newDisplayName);
     const [newPhoto, setNewPhoto] = useState(userObj.photoURL);
+    const fileInput = useRef();
     const onLogOutClick = () => {
       authService.signOut();
       history.push("/");
@@ -37,12 +39,12 @@ const Profile = ({ refreshUser,userObj}) => {
     };
     
     const onChangePhoto = e => {
-      const {target : {value}} = e;
+      const {target : {files}} = e;
       const photo = files[0];
       const reader = new FileReader();
       reader.onloadend = (finishedEvent) => {
         const {currentTarget : {result} }  = finishedEvent;
-            setnewPhoto(result); //onloadend에 finishEvent의 result를 setAttachment로 설정
+            setNewPhoto(result); //onloadend에 finishEvent의 result를 setAttachment로 설정
         }
         reader.readAsDataURL(photo);
       }
@@ -71,7 +73,7 @@ const Profile = ({ refreshUser,userObj}) => {
       <div className="container">
         <form onSubmit={onSubmit} className="profileForm">
         <>
-        {upimage && (
+        {newPhoto && (
                 <div>
                     <Avatar 
                         className="avatar_img"
